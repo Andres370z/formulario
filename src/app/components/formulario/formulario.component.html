@@ -1,0 +1,62 @@
+<br>
+<h3 class="text-center">Formulario</h3>
+<div class="container">
+  <form class="" [formGroup]="form">
+    <div class="row g-3 align-items-center">
+      <!-- Datos personales -->
+      <div class="form-goup">
+        <label>Nombre</label>
+        <input formControlName="nombre" type="text" class="form-control">
+        <br>
+        <label for="">Apellido</label>
+        <input formControlName="apellido" type="text" class="form-control">
+        <br>
+        <label for="">Teléfono</label>
+        <input formControlName="telefono" type="number" class="form-control">
+        <br>
+
+        <!-- Operador de TELEFONIA -->
+        <div class="form-goup">
+          <label for="opt">¿Cuál es tu operador de telefonía móvil?</label>
+          <select  class="form-select" formControlName="operador">
+            <option hidden selected>Selecciona una opción</option>
+            <option value="Movistar">Movistar</option>
+            <option value="Wom">Wom</option>
+            <option value="Tigo">Tigo</option>
+            <option value="Claro">Claro</option>
+            <option value="otro">otro</option>
+          </select>
+        </div>
+        <br>
+
+        <!-- OPERADOR DE INTERNET -->
+        <div class="form-goup">
+          <label for="opt">¿Cuál es tu operador de internet y televisión?</label>
+          <select  class="form-select" formControlName="operadorTv">
+            <option value="Movistar">Movistar</option>
+            <option value="DirectTv">DirectTv</option>
+            <option value="Tigo">Tigo</option>
+            <option value="Claro">Claro</option>
+          </select>
+        </div>
+        <br>
+        <!-- TIPO DE  CLIENTE -->
+        <div class="text-center">
+          <button type="button" class="btn btn-success" (click)="respuesta=!respuesta">Soy promotor</button>
+        </div>
+        <br>
+        <label for="opt" *ngIf="respuesta" class="text-center" >¿Cual es el tipo de cliente?</label>
+          <select  class="form-select"  *ngIf="respuesta" formControlName="tipoCliente">
+            <option value="Nuevo">Nuevo</option>
+            <option value="Convergente">Convergente</option>
+          </select>
+        <br>
+        <!-- GUARDAR RESPUESTA -->
+        <div class="text-center">
+          <button [disabled]="form.invalid" type="submit" class="btn btn-primary position-relative" (click)="enviar()">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </form> 
+</div>
+<app-recibe-informacion></app-recibe-informacion>
